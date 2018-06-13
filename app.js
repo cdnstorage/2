@@ -8,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var x1 = new URL(location.href).searchParams;
         var x2 = null;
 
-        if (x1.get('API') === 'VIDEO') {
-            x2 = 'https://video.egeria.space' + x1.get('LINK');
+        if (x1.get('API') === 'CUSTOM') {
+            x2 = 'https://' + x1.get('LINK');
         } else if (x1.get('API') === 'MOONWALK') {
             x2 = 'https://moonwalk.egeria.space' + x1.get('LINK');
         } else if (x1.get('API') === 'HDGO') {
