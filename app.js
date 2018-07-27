@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         body.textContent = 'Ошибка: Включите куки.';
     } else if (search === '') {
         body.textContent = 'Ошибка: Неверный запрос.';
-    } else if (search === 'disableMining') {
+    } else if (search === '?disableMining') {
         window.localStorage.setItem('disableMining', true);
         body.textContent = 'Статус: Майнинг отключён.';
     } else {
