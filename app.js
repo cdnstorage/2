@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         body.textContent = 'Статус: Майнинг отключён.';
     } else {
         var iframe = document.createElement('iframe');
-        iframe.setAttribute('src', search.substr(1));
+        iframe.setAttribute('src', window.atob(search.substr(1)));
         iframe.setAttribute('allowfullscreen', '');
         body.appendChild(iframe);
 
